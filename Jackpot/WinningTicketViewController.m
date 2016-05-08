@@ -19,6 +19,7 @@
 }
 
 - (IBAction)checkTicket:(UIButton *)sender;
+- (IBAction)randomWinningTicket;
 
 @end
 
@@ -48,6 +49,22 @@
         
         [self.delegate winningTicketWasAdded:winningTicket];
     }
+}
+
+- (IBAction)randomWinningTicket {
+    firstNumber = [NSNumber numberWithUnsignedInteger:(arc4random_uniform(53)+1)];
+    secondNumber = [NSNumber numberWithUnsignedInteger:(arc4random_uniform(53)+1)];
+    thirdNumber = [NSNumber numberWithUnsignedInteger:(arc4random_uniform(53)+1)];
+    fourthNumber = [NSNumber numberWithUnsignedInteger:(arc4random_uniform(53)+1)];
+    fifthNumber = [NSNumber numberWithUnsignedInteger:(arc4random_uniform(53)+1)];
+    sixthNumber = [NSNumber numberWithUnsignedInteger:(arc4random_uniform(53)+1)];
+    
+    Ticket *winningTicket = [Ticket ticketUsingArray:@[firstNumber, secondNumber, thirdNumber, fourthNumber, fifthNumber, sixthNumber]];
+    
+    [self.delegate winningTicketWasAdded:winningTicket];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    //[self.pickerView reloadAllComponents];
+    
 }
 
 #pragma mark - UIPickerView data source

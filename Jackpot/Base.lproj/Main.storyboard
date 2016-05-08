@@ -22,14 +22,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Numbers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cj-mM-dPh">
-                                            <rect key="frame" x="23" y="11" width="71" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Numbers" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Cj-mM-dPh">
+                                            <rect key="frame" x="23" y="11" width="70" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Payout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-gO-YTP">
-                                            <rect key="frame" x="523" y="11" width="54" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payout" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AMg-gO-YTP">
+                                            <rect key="frame" x="524" y="11" width="53" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -89,15 +89,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Oqh-jn-pzd">
-                                <rect key="frame" x="0.0" y="219" width="600" height="162"/>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oqh-jn-pzd">
+                                <rect key="frame" x="0.0" y="192" width="600" height="216"/>
                                 <connections>
                                     <outlet property="dataSource" destination="V2l-qA-hOe" id="Ry5-a3-e3S"/>
                                     <outlet property="delegate" destination="V2l-qA-hOe" id="GtY-Vf-GGo"/>
                                 </connections>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLc-C6-mKo">
-                                <rect key="frame" x="251" y="401" width="98" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uLc-C6-mKo">
+                                <rect key="frame" x="251" y="428" width="98" height="30"/>
                                 <state key="normal" title="Check Tickets">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -105,11 +105,20 @@
                                     <action selector="checkTicket:" destination="V2l-qA-hOe" eventType="touchUpInside" id="5nj-ZO-XhO"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lpt-OI-68O">
+                                <rect key="frame" x="241" y="155" width="118" height="30"/>
+                                <state key="normal" title="I'm Feelin' Lucky!"/>
+                                <connections>
+                                    <action selector="randomWinningTicket" destination="V2l-qA-hOe" eventType="touchUpInside" id="vmZ-pB-pAz"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="uLc-C6-mKo" firstAttribute="top" secondItem="Oqh-jn-pzd" secondAttribute="bottom" constant="20" id="9CN-B4-O8m"/>
                             <constraint firstItem="Oqh-jn-pzd" firstAttribute="leading" secondItem="kxh-aJ-Bu0" secondAttribute="leading" id="G2e-dg-5n9"/>
+                            <constraint firstItem="Lpt-OI-68O" firstAttribute="centerX" secondItem="kxh-aJ-Bu0" secondAttribute="centerX" id="GfL-R9-0fd"/>
+                            <constraint firstItem="Lpt-OI-68O" firstAttribute="top" secondItem="FRV-ri-O1H" secondAttribute="bottom" constant="91" id="R5j-Eb-vBe"/>
                             <constraint firstAttribute="centerX" secondItem="Oqh-jn-pzd" secondAttribute="centerX" id="gQe-MW-hKU"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Oqh-jn-pzd" secondAttribute="trailing" id="jBM-E5-bsW"/>
                             <constraint firstItem="Oqh-jn-pzd" firstAttribute="leading" secondItem="kxh-aJ-Bu0" secondAttribute="leadingMargin" constant="-16" id="jtr-hI-RU4"/>
