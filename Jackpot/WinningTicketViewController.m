@@ -19,9 +19,7 @@
     NSNumber *sixthNumber;
 }
 
-
 - (IBAction)randomWinningTicket;
-
 
 
 - (IBAction)checkTicket:(UIButton *)sender;
@@ -83,6 +81,10 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
+    
+    
+    
+    
     return 53;
 }
 
@@ -105,6 +107,11 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
+    if (component == firstNumber.integerValue || secondNumber.integerValue || thirdNumber.integerValue|| fourthNumber.integerValue || fifthNumber.integerValue || sixthNumber.integerValue){
+    
+        [pickerView selectRow:(component+1) inComponent:component animated:YES];
+    }
+    
     switch (component)
     {
         case 0:
@@ -130,6 +137,7 @@
             break;
     }
 }
+
 
 #pragma mark - Private Methods
 
