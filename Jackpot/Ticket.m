@@ -5,16 +5,7 @@
 //  Created by Ben Gohlke on 3/3/15.
 //  Copyright (c) 2015 The Iron Yard. All rights reserved.
 //
-
 #import "Ticket.h"
-
-typedef enum
-{
-    WinnerType1Dollar = 3,
-    WinnerType5Dollars = 4,
-    WinnerType20Dollars = 5,
-    WinnerType100Dollars = 6,
-} WinnerType;
 
 @interface Ticket ()
 {
@@ -49,6 +40,7 @@ typedef enum
         picks = [[NSMutableArray alloc] init];
         _winner = NO;
         _payout = @"";
+        _payoutTotal = 0;
     }
     
     return self;
@@ -117,21 +109,25 @@ typedef enum
     
     switch (matchCount)
     {
-        case WinnerType1Dollar:
+        case 1:
             [self setWinner:YES];
-            [self setPayout:@"$1"];
+            [self setPayout:@"1"];
+            [self setPayoutTotal: _payoutTotal+1];
             break;
-        case WinnerType5Dollars:
+        case 2:
             [self setWinner:YES];
-            [self setPayout:@"$5"];
+            [self setPayout:@"5"];
+            [self setPayoutTotal: _payoutTotal+5];
             break;
-        case WinnerType20Dollars:
+        case 3:
             [self setWinner:YES];
-            [self setPayout:@"$20"];
+            [self setPayout:@"20"];
+            [self setPayoutTotal: _payoutTotal+20];
             break;
-        case WinnerType100Dollars:
+        case 4:
             [self setWinner:YES];
-            [self setPayout:@"$100"];
+            [self setPayout:@"100"];
+            [self setPayoutTotal: _payoutTotal+100];
             break;
             
         default:

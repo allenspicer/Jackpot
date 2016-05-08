@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 The Iron Yard. All rights reserved.
 //
 
-#import "TicketsTableViewController.h"
-#import "WinningTicketViewController.h"
 
+#import "WinningTicketViewController.h"
+#import "TicketsTableViewController.h"
 #import "Ticket.h"
 
 @interface TicketsTableViewController ()
@@ -24,12 +24,16 @@
 
 @implementation TicketsTableViewController
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+    [self.tableView reloadData];
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.title = @"Lottery Tickets";
     tickets = [[NSMutableArray alloc] init];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -54,32 +58,39 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TicketCell" forIndexPath:indexPath];
     
     Ticket *aTicket = tickets[indexPath.row];
+    
+    NSSortDescriptor *payoutSortDescriptor = [[NSSortDescriptor alloc]initWithKey:@"payout" ascending:NO];
+    [tickets sortUsingDescriptors:@[payoutSortDescriptor]];
+    
     UILabel *numbersLabel = (UILabel *)[cell viewWithTag:1];
     UILabel *payoutLabel = (UILabel *)[cell viewWithTag:2];
-    
     numbersLabel.text = [aTicket description];
-    if (aTicket.winner)
-    {
+    
+    if (aTicket.winner){
+        self.title = [NSString stringWithFormat:@"Won:$%ld,Lost:$%lu", (long)aTicket.payoutTotal,(unsigned long)[tickets count]];
+        
+        
         cell.backgroundColor = [UIColor greenColor];
-        payoutLabel.text = aTicket.payout;
-
+        payoutLabel.text = [@"$" stringByAppendingString: aTicket.payout];
+        
     }
     else
     {
         cell.backgroundColor = [UIColor whiteColor];
-        payoutLabel.text = @"";
-
+        payoutLabel.text = @"0";
+        
     }
     return cell;
-
+    
 }
 
 #pragma mark - WinningTicketViewControllerDelegate
 
 - (void)winningTicketWasAdded:(Ticket *)ticket
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
     [self checkForWinnersUsingTicket:ticket];
+    
+    
 }
 
 #pragma mark - Navigation
@@ -100,6 +111,7 @@
 {
     Ticket *aTicket =[Ticket ticketUsingQuickPick];
     [tickets addObject:aTicket];
+    
     [self.tableView reloadData];
 }
 
@@ -111,6 +123,7 @@
     {
         [aTicket compareWithTicket:winningTicket];
     }
+    
     [self.tableView reloadData];
 }
 

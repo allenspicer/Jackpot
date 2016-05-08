@@ -12,6 +12,7 @@
 
 @property (assign) BOOL winner;
 @property (strong, nonatomic) NSString *payout;
+@property (nonatomic) NSInteger *payoutTotal;
 
 + (instancetype)ticketUsingQuickPick;
 + (instancetype)ticketUsingArray:(NSArray *)picks;

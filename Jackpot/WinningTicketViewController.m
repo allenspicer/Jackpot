@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 The Iron Yard. All rights reserved.
 //
 
+
 #import "WinningTicketViewController.h"
 
 @interface WinningTicketViewController () <UIPickerViewDataSource, UIPickerViewDelegate>
@@ -18,8 +19,13 @@
     NSNumber *sixthNumber;
 }
 
-- (IBAction)checkTicket:(UIButton *)sender;
+
 - (IBAction)randomWinningTicket;
+
+
+
+- (IBAction)checkTicket:(UIButton *)sender;
+
 
 @end
 
@@ -39,18 +45,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)checkTicket:(UIButton *)sender
-{
-    if ([self allNumbersArePicked])
-    {
-    
-        Ticket *winningTicket = [Ticket ticketUsingArray:@[firstNumber, secondNumber, thirdNumber, fourthNumber, fifthNumber, sixthNumber]];
-        
-        
-        [self.delegate winningTicketWasAdded:winningTicket];
-    }
-}
-
 - (IBAction)randomWinningTicket {
     firstNumber = [NSNumber numberWithUnsignedInteger:(arc4random_uniform(53)+1)];
     secondNumber = [NSNumber numberWithUnsignedInteger:(arc4random_uniform(53)+1)];
@@ -65,6 +59,19 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
     //[self.pickerView reloadAllComponents];
     
+}
+
+
+- (IBAction)checkTicket:(UIButton *)sender
+{
+    if ([self allNumbersArePicked])
+    {
+        Ticket *winningTicket = [Ticket ticketUsingArray:@[firstNumber, secondNumber, thirdNumber, fourthNumber, fifthNumber, sixthNumber]];
+        
+        [self.delegate winningTicketWasAdded:winningTicket];
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        
+    }
 }
 
 #pragma mark - UIPickerView data source
